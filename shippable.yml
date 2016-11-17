@@ -1,0 +1,17 @@
+language: java
+
+env:
+  - OSM_FILE=http://download.geofabrik.de/europe/netherlands-latest.osm.pbf
+
+build:
+  post_ci:
+    - docker build -t frisio/graphhoper .
+    - docker push frisio/graphhoper
+
+integrations:
+  hub:
+    - integrationName: Frisio
+      type: docker
+
+
+
